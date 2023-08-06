@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Waifu Finder</title>
+    <link rel="ico" type="image/x-icon" href="favicon.ico">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #141313;
+            color: #fff;
+        }
+
+        h1 {
+            text-align: center;
+            padding: 20px;
+        }
+        h2 {
+            text-align: center;
+            padding: flex;
+        }
+
+        #searchForm {
+            text-align: center;
+            margin-top: 50px;
+            animation: fadeInUp 1s both;
+        }
+
+        input[type="text"] {
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            outline: none;
+            width: 300px;
+            background-color: #333;
+            color: #fff;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            background-color: #582e2e;
+            color: #fff;
+            cursor: pointer;
+            outline: none;
+        }
+
+        button:hover {
+            background-color: #4c2727;
+        }
+
+        .dark-mode {
+            background-color: #222;
+            color: #fff;
+        }
+
+        .dark-mode input[type="text"] {
+            background-color: #333;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+    <h1>Waifu Finder</h1>
+    <h2>Creator:ncpnxz</h2>
+    <form id="searchForm" onsubmit="return performSearch()" target="_blank">
+        <input type="text" id="searchInput" placeholder="put name of your waifu">
+        <button type="submit">Find >:3</button>
+    </form>
+
+    <script>
+        function performSearch() {
+            const userInput = document.getElementById("searchInput").value;
+            const searchQuery = userInput + " hentai ";
+
+            const encodedQuery = encodeURIComponent(searchQuery);
+            const searchUrl = "https://www.google.com/search?q=" + encodedQuery;
+
+            window.open(searchUrl, "_blank");
+            return false;
+        }
+
+        
+        (function () {
+            const currentTheme = localStorage.getItem("theme") || "light";
+            document.body.classList.add(currentTheme);
+
+            function toggleTheme() {
+                document.body.classList.toggle("dark-mode");
+                const theme = document.body.classList.contains("dark-mode") ? "dark" : "light";
+                localStorage.setItem("theme", theme);
+            }
+
+            document.getElementById("searchForm").addEventListener("submit", toggleTheme);
+        })();
+    </script>
+</body>
+</html>
